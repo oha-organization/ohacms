@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class Post(models.Model):
@@ -6,7 +7,7 @@ class Post(models.Model):
     name = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     description = models.TextField()
-    content = models.TextField()
+    content = RichTextField()
     status = models.CharField(choices=(
             ('y', "Yayinda"),
             ('t', "Taslak"),
