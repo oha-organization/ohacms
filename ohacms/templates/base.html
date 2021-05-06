@@ -9,6 +9,13 @@
 </head>
 <body>
 <h1>OHACMS</h1>
+
+{% for post in posts %}
+
+{{ post.title }}<br>
+
+{% endfor %}
+
 {% block content %}
 
 {% endblock content %}
