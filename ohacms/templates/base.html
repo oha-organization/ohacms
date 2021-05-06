@@ -16,8 +16,14 @@
 
 {% for post in posts %}
     {% if post.post_type == 'sayfa' %}
-        <a href="/post/{{ post.pk }}">{{ post.title }}</a>
-        <br>
+        {% if post.parent_id is null %}
+            <a href="/post/{{ post.pk }}">{{ post.title }}</a>
+            {%for post_sub in posts %}
+                {% if post.pk == post_sub.parent_id %}
+                     <a class="sub" href="/post/{{ post_sub.pk }}">{{ post_sub.title }}</a>
+                {% endif %}
+            {% endfor %}            
+        {% endif %}
     {% endif %}
 {% endfor %}
 
