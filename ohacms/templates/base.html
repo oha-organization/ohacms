@@ -11,8 +11,8 @@
 <h1>OHACMS</h1>
 
 {% for post in posts %}
-
-{{ post.title }}<br>
+<a href="/post/{{ post.pk }}">{{ post.title }}</a>
+    <br>
 
 {% endfor %}
 
