@@ -10,10 +10,15 @@
 <body>
 <h1>OHACMS</h1>
 
-{% for post in posts %}
-<a href="/post/{{ post.pk }}">{{ post.title }}</a>
-    <br>
+{{ posts }}
+<br>
 
+
+{% for post in posts %}
+    {% if post.post_type == 'sayfa' %}
+        <a href="/post/{{ post.pk }}">{{ post.title }}</a>
+        <br>
+    {% endif %}
 {% endfor %}
 
 {% block content %}
