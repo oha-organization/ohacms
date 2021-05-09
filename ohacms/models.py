@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -16,7 +17,11 @@ class Post(models.Model):
     )
     post_type = models.CharField(max_length=10)
     order = models.IntegerField()
-    parent_id = models.ForeignKey("Post", on_delete=models.SET_NULL, null=True, blank=True)
+    parent = models.ForeignKey("Post", on_delete=models.SET_NULL, null=True, blank=True)
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular post instance."""
+        return reverse('post-detail', args=[str(self.id)])
 
     def __str__(self):
         return self.name
