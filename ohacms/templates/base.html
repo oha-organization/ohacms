@@ -8,24 +8,41 @@
     <title>Document</title>
 </head>
 <body>
-<h1>OHACMS</h1>
+<h1><a href="{% url 'home' %}">OHACMS</a></h1>
 
-{{ posts }}
-<br>
+Post: {{ posts }}
+<hr>
 
+<ul>
+    <h2>All Posts(name, type -> parent)</h2>
+{% for post in posts %}
+    <li>{{ post.name }}, {{ post.post_type }} -> {{ post.parent }}</li>
+{% empty %}
+    <li>Sorry, no post in this list.</li>
+{% endfor %}
+</ul>
+<hr>
 
+<ul>
 {% for post in posts %}
     {% if post.post_type == 'sayfa' %}
-        {% if post.parent_id is null %}
-            <a href="/post/{{ post.pk }}">{{ post.title }}</a>
-            {%for post_sub in posts %}
-                {% if post.pk == post_sub.parent_id %}
-                     <a class="sub" href="/post/{{ post_sub.pk }}">{{ post_sub.title }}</a>
+        <!--If post.parent is not empty-->
+        {% if not post.parent %}
+            <!--{{ post.get_absolute_url }} to get post detail page-->
+            <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+            {% for post_sub in posts %}
+                {% if post.pk == post_sub.parent.pk %}
+                <ul>
+                     <li><a class="sub" href="{{ post_sub.get_absolute_url }}">{{ post_sub.title }}</a></li>
+                </ul>
                 {% endif %}
-            {% endfor %}            
+            {% endfor %}
         {% endif %}
     {% endif %}
+{% empty %}
+    <li>Sorry, no posts in this list.</li>
 {% endfor %}
+</ul>
 
 {% block content %}
 
