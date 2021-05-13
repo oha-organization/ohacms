@@ -4,4 +4,16 @@
 
 <h2>Home Page</h2>
 
+<ul>
+{% for post in posts %}
+    <li>{{ post.name }}, parent: {{ post.parent }}</li>
+    <ul>
+    {% for child in post.post_set.all %}
+        <li>Child name: {{ child.name }}</li>
+    {% empty %}
+        <li>There is no Child</li>
+    {% endfor %}
+    </ul>
+{% endfor %}
+</ul>
 {% endblock content %}
