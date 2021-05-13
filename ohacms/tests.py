@@ -6,6 +6,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.urls import reverse
 from selenium.webdriver.firefox.webdriver import WebDriver
 from .models import Post
+from .models import Option
 
 
 class PostTestCase(TestCase):
@@ -14,7 +15,11 @@ class PostTestCase(TestCase):
         Post.objects.create(name='Welcome', title='WelcomeTitle', description='Welcome description',
                             content='Welcome content', status='y', post_type='sayfa', order=1)
         Post.objects.create(name='About', title='AboutTitle', description='About description',
-                            content='About content', status='y', post_type='sayfa', order=2)
+                            content='About content', status='y', post_type='sayfa', order=2),
+        Option.objects.create(name='Title',description='Site Title',content='This is the site title'),
+        Option.objects.create(name='Description',description='Site Description',content='This is the description'),
+        Option.objects.create(name='Footer',description='Footer',content='Copyright 2020')
+
 
     def test_string_representation(self):
         post = Post(name='A sample name')
