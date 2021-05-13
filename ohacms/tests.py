@@ -18,7 +18,7 @@ class PostTestCase(TestCase):
                             content='About content', status='y', post_type='sayfa', order=2),
         Option.objects.create(name='Title',description='Site Title',content='This is the site title'),
         Option.objects.create(name='Description',description='Site Description',content='This is the description'),
-        Option.objects.create(name='Footer',description='Footer',content='Copyright 2020')
+        Option.objects.create(name='Footer',description='Footer',content='Copyright 2020'),
 
 
     def test_string_representation(self):
