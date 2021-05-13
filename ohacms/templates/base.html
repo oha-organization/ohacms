@@ -90,10 +90,10 @@
 </div><!--div.content end-->
 <div class="footer">
     {% for option in options %}
-    {% if option.name == 'Footer' %}
-        {{ option.content |safe}}
-    {% endif %}
-{% endfor %}
+        {% if option.name == 'Footer' %}
+            {{ option.content |safe }}
+        {% endif %}
+    {% endfor %}
 </div><!--div.footer end-->
 </div><!--div.wrapper end-->
 </body>
