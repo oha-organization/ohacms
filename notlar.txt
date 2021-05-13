@@ -1,3 +1,17 @@
 Notları buraya alırız.
 
 Ayrı branchler üzepiprinde de çalışırız.
+
+migrate işlemleri
+python manage.py makemigrations
+python manage.py migrate 
+
+runserver
+python manage.py runserver
+
+test
+python manage.py test
+
+firefoxdriver
+https://selenium-python.readthedocs.io/installation.html
+testi çalıştırmak için selenium driveri indirip path'e eklemek gerekiyor. yeniden başlatınca çalıştı. 
