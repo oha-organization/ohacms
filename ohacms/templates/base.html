@@ -31,6 +31,29 @@
             padding:0;
             margin-right:20px;
             display:inline-block;
+            position:relative;
+        }
+        .menu ul li ul{
+            display:none;
+            background-color:yellow;
+            border:1px solid black;
+            position:absolute;
+            padding:0;
+            margin:0;
+            
+        }
+        .menu ul li:hover ul{
+            display:block;
+            left:0em;
+        }
+        .menu ul li ul li a{
+        
+        text-align: left;
+        padding: 5px;
+        border-bottom: 1px solid #333;
+        font-size: .8em;
+        display:block;
+        width:100%;
         }
         .menu ul a{
             display:inline-block;
@@ -44,7 +67,7 @@
         .footer{
             background-color: blueviolet;
             padding:10px;
-            text-align: center;
+            text-align: right;
             color:white;
         }
     </style>
@@ -68,19 +91,23 @@
         <!--If post.parent is not empty-->
         {% if not post.parent %}
             <!--{{ post.get_absolute_url }} to get post detail page-->
-            <li class="parent"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> </li>
-            {% for post_sub in posts %}  
-            <!-- burada eğer varsa ul başlatmak gerekiyor alt menü için. buna sonra bakarız -->
-                {% if post.pk == post_sub.parent.pk %}                
-                     <li class="sub"><a href="{{ post_sub.get_absolute_url }}">{{ post_sub.title }}</a></li>                
-                {% endif %}
+            <li class="parent"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> 
+            {% if post.post_set.all %} <!-- if post has subposts create a new ul tag, else close li tag -->
+                <ul>
+            {% else %}
+                </li>
+            {% endif %}
+            {% for post_sub in post.post_set.all %}  
+                  <li class="sub"><a href="{{ post_sub.get_absolute_url }}">{{ post_sub.title }}</a></li>                
             {% endfor %}
-           
+            {% if post.post_set.all %}
+            </ul></li>
+            {% endif %}
         {% endif %}
     {% endif %}
     {% empty %}
         <li>Sorry, no posts in this list.</li>
-    {% endfor %}
+{% endfor %}
 </ul>
 </div><!--div.menu end-->
 <div class="content">

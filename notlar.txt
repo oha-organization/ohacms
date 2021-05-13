@@ -19,3 +19,5 @@ testi çalıştırmak için selenium driveri indirip path'e eklemek gerekiyor. y
 
 fixtures veritabanına varsayılan veriler eklemek için kullanılıyor. 
 python manage.py loaddata option-data komutunu bir defa çağırınca ekleme yapıyor. 
+Bunu yaptıktan sonra site başlığı ve footerdaki yazı yönetim panelinden düzenlenebilir. 
+Siteyi kullananın bu bölümleri değiştirebilmesi amaçlanmıştır. 
