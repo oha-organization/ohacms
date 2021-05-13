@@ -89,7 +89,11 @@
 {% endblock content %}
 </div><!--div.content end-->
 <div class="footer">
-Copyright Text
+    {% for option in options %}
+    {% if option.name == 'Footer' %}
+        {{ option.content |safe}}
+    {% endif %}
+{% endfor %}
 </div><!--div.footer end-->
 </div><!--div.wrapper end-->
 </body>

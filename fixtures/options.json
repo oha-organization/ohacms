@@ -1,0 +1,29 @@
+[
+    {
+      "model": "ohacms.option",
+      "pk": 1,
+      "fields": {
+        "name": "Title",
+        "description": "This data is for Site Title",
+        "content": "OHACMS Web Site"
+      }
+    },
+    {
+      "model": "ohacms.option",
+      "pk": 2,
+      "fields": {
+        "name": "Description",
+        "description": "This data is for Site Description",
+        "content": "OHACMS Web Site"
+      }
+    },
+    {
+      "model": "ohacms.option",
+      "pk": 3,
+      "fields": {
+        "name": "Footer",
+        "description": "This data is for Footer",
+        "content": "OHACMS Copyright 2021"
+      }
+    }
+  ]
