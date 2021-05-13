@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'ohacms.context_processors.posts',
+                'ohacms.context_processors.options',
             ],
         },
     },

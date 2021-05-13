@@ -25,3 +25,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.name
+
+class Option(models.Model):
+    """ a model of options """
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    content = RichTextField()
+    def __str__(self):
+        return self.name
