@@ -5,47 +5,123 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Site Title</title>
+    <style>
+        body{
+            background-color: black;
+
+        }
+        /*
+        wrapper is for wrapper :) center of the body, width:1000px for now. 
+        */
+        .wrapper{
+            margin:auto; 
+            background-color: white;
+            padding:10px;
+            width:980px;
+        }
+        .menu{
+            padding:8px;
+            background-color: blueviolet;
+        }
+        .menu ul{
+            
+        }
+        .menu ul li{
+            padding:0;
+            margin-right:20px;
+            display:inline-block;
+            position:relative;
+        }
+        .menu ul li ul{
+            display:none;
+            background-color:yellow;
+            border:1px solid black;
+            position:absolute;
+            padding:0;
+            margin:0;
+            
+        }
+        .menu ul li:hover ul{
+            display:block;
+            left:0em;
+        }
+        .menu ul li ul li a{
+        
+        text-align: left;
+        padding: 5px;
+        border-bottom: 1px solid #333;
+        font-size: .8em;
+        display:block;
+        width:100%;
+        }
+        .menu ul a{
+            display:inline-block;
+            text-decoration: none;
+            color:white;
+        }
+        .content{
+            padding:5px;
+            min-height: 300px;
+        }
+        .footer{
+            background-color: blueviolet;
+            padding:10px;
+            text-align: right;
+            color:white;
+        }
+    </style>
 </head>
 <body>
-<h1><a href="{% url 'home' %}">OHACMS</a></h1>
-
-Post: {{ posts }}
-<hr>
-
-<ul>
-    <h2>All Posts(name, type -> parent)</h2>
-{% for post in posts %}
-    <li>{{ post.name }}, {{ post.post_type }} -> {{ post.parent }}</li>
-{% empty %}
-    <li>Sorry, no post in this list.</li>
-{% endfor %}
-</ul>
-<hr>
-
+<div class="wrapper">
+    <div class="header">
+        <h1><a href="{% url 'home' %}">
+            <!-- test ile eklediğimiz name'i Title olan optionsu getir. Bu getirmeyi kolaylaştırabiliriz. -->
+            {% for option in options %}
+                {% if option.name == 'Title' %}
+                    {{ option.content |safe }}
+                {% endif %}
+            {% endfor %}
+        </a></h1>
+    </div><!--div.header end-->
+<div class="menu">
 <ul>
 {% for post in posts %}
     {% if post.post_type == 'sayfa' %}
         <!--If post.parent is not empty-->
         {% if not post.parent %}
             <!--{{ post.get_absolute_url }} to get post detail page-->
-            <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
-            {% for post_sub in posts %}
-                {% if post.pk == post_sub.parent.pk %}
+            <li class="parent"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> 
+            {% if post.post_set.all %} <!-- if post has subposts create a new ul tag, else close li tag -->
                 <ul>
-                     <li><a class="sub" href="{{ post_sub.get_absolute_url }}">{{ post_sub.title }}</a></li>
-                </ul>
-                {% endif %}
+            {% else %}
+                </li>
+            {% endif %}
+            {% for post_sub in post.post_set.all %}  
+                  <li class="sub"><a href="{{ post_sub.get_absolute_url }}">{{ post_sub.title }}</a></li>                
             {% endfor %}
+            {% if post.post_set.all %}
+            </ul></li>
+            {% endif %}
         {% endif %}
     {% endif %}
-{% empty %}
-    <li>Sorry, no posts in this list.</li>
+    {% empty %}
+        <li>Sorry, no posts in this list.</li>
 {% endfor %}
 </ul>
-
+</div><!--div.menu end-->
+<div class="content">
 {% block content %}
 
 {% endblock content %}
+</div><!--div.content end-->
+<div class="footer">
+    {% for option in options %}
+        {% if option.name == 'Footer' %}
+            {{ option.content |safe }}
+        {% endif %}
+    {% endfor %}
+</div><!--div.footer end-->
+</div><!--div.wrapper end-->
 </body>
 </html>
