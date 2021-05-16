@@ -21,7 +21,7 @@ class Post(models.Model):
             ('d', "Duyuru"),
             ('h', "Haber"),
         ),
-        max_length=10
+        max_length=1
     )
     order = models.IntegerField()
     parent = models.ForeignKey("Post", on_delete=models.SET_NULL, null=True, blank=True)
