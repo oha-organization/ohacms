@@ -17,9 +17,9 @@ class Post(models.Model):
         max_length=1
     )
     post_type =  models.CharField(choices=(
-            ('sayfa', "Sayfa"),
-            ('duyuru', "Duyuru"),
-            ('haber', "Haber"),
+            ('s', "Sayfa"), 
+            ('d', "Duyuru"),
+            ('h', "Haber"),
         ),
         max_length=10
     )

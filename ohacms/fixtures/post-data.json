@@ -1,0 +1,78 @@
+[
+    {
+      "model": "ohacms.post",
+      "pk": 1,
+      "fields": {
+        "name": "About",
+        "title":"About",
+        "content":"About page",
+        "description": "About Page"      ,
+        "slug":"about",
+        "status":"y",
+        "post_type":"s",
+        "order":1,
+        "parent":null
+      }
+    },
+    {
+        "model": "ohacms.post",
+        "pk": 2,
+        "fields": {
+          "name": "Photos",
+          "title":"Photos",
+          "content":"Photos page",
+          "description": "Photos Page"      ,
+          "slug":"Photos",
+          "status":"y",
+          "post_type":"s",
+          "order":3,
+          "parent":null
+        }
+      },
+      {
+        "model": "ohacms.post",
+        "pk": 3,
+        "fields": {
+          "name": "Landscapes",
+          "title":"Landscapes",
+          "content":"Landscapes page",
+          "description": "Landscapes Page"      ,
+          "slug":"Landscapes",
+          "status":"y",
+          "post_type":"s",
+          "parent":2,
+          "order":4
+        }
+      },
+      {
+        "model": "ohacms.post",
+        "pk": 4,
+        "fields": {
+          "name": "Photo Models",
+          "title":"Photo Models",
+          "content":"Photo Models page",
+          "description": "Photo Models Page"      ,
+          "slug":"photo-models",
+          "status":"y",
+          "post_type":"s",
+          "parent":2,
+          "order":3
+        }
+      },
+      {
+        "model": "ohacms.post",
+        "pk": 5,
+        "fields": {
+          "name": "Contact",
+          "title":"Contact",
+          "content":"Contact page",
+          "description": "Contact Page"      ,
+          "slug":"Contact",
+          "status":"y",
+          "post_type":"s",
+          "order":5,
+          "parent":null
+        }
+      }
+      
+  ]
