@@ -31,7 +31,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a particular post instance."""
         # return reverse('post-detail', kwargs={'slug': self.slug})
-        if self.link is not None:
+        if self.link:
             return self.link
         else:
             return reverse('post-detail', kwargs={'slug': self.slug})
