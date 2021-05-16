@@ -22,6 +22,9 @@ python manage.py loaddata option-data komutunu bir defa çağırınca ekleme yap
 Bunu yaptıktan sonra site başlığı ve footerdaki yazı yönetim panelinden düzenlenebilir. 
 Siteyi kullananın bu bölümleri değiştirebilmesi amaçlanmıştır. 
 
+python manage.py loaddata post-data komutu postları ekliyor. 
+hazır postlar için. 
+
 https://learndjango.com/tutorials/django-slug-tutorial
 slugfield için buradan yardım alındı. 
 title yazılırken otomatik olarak şu an oluşturuyor. 

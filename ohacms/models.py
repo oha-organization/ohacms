@@ -16,7 +16,13 @@ class Post(models.Model):
         ),
         max_length=1
     )
-    post_type = models.CharField(max_length=10)
+    post_type =  models.CharField(choices=(
+            ('s', "Sayfa"), 
+            ('d', "Duyuru"),
+            ('h', "Haber"),
+        ),
+        max_length=1
+    )
     order = models.IntegerField()
     parent = models.ForeignKey("Post", on_delete=models.SET_NULL, null=True, blank=True)
 
