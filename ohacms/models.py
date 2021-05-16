@@ -1,12 +1,13 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.urls import reverse
-
+from django.template.defaultfilters import slugify
 
 class Post(models.Model):
     """A model of a post."""
     name = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
+    slug = models.SlugField(default='', max_length=200, blank=True)
     description = models.TextField()
     content = RichTextField()
     status = models.CharField(choices=(
@@ -21,7 +22,14 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a particular post instance."""
-        return reverse('post-detail', args=[str(self.id)])
+        return reverse('post-detail', kwargs={'slug': self.slug})
+
+
+    def save(self, *args, **kwargs): # new
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.name
