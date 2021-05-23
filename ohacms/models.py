@@ -53,3 +53,11 @@ class Option(models.Model):
 
     def __str__(self):
         return self.name
+
+class Slide(models.Model):
+    title = models.CharField(max_length=500)
+    Description = models.TextField()
+    image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.title
