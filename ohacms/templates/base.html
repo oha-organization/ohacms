@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Site Title</title>
 
@@ -13,58 +12,54 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous">
 
+        
     {# My Css Styles Start #}
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css\style-1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\style-3.css' %}">
     {# My Css Styles End #}
 
 </head>
 
-<body>
-    <div class="container">
+<body class="d-flex flex-column h-100">
 
-        <div class="header row-cols-1">
-            <h1><a href="{% url 'home' %}">
-                    {# test ile eklediğimiz name'i Title olan optionsu getir. Bu getirmeyi kolaylaştırabiliriz. #}
-                    {% for option in options %}
-                    {% if option.name == 'Title' %}
-                    {{ option.content |safe }}
-                    {% endif %}
-                    {% endfor %}
-                </a></h1>
-        </div>
-        {# div.header end #}
-
-        <div class="menu navbar navbar-expand-lg navbar-light bg-primary text-white">
-            <a class="navbar-brand text-white" href="#">OHACMS</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                {# test ile eklediğimiz name'i Title olan optionsu getir. Bu getirmeyi kolaylaştırabiliriz. #}
+                {% for option in options %}
+                {% if option.name == 'Title' %}
+                {{ option.content |safe }}
+                {% endif %}
+                {% endfor %}
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+    
                 {% for post in posts %}
                         {% if post.post_type == 's' %}
                         {# If post.parent is not empty #}
                             {% if not post.parent %}
                             {# {{ post.get_absolute_url }} to get post detail page #}
-                            <li class="parent nav-item">
-                                <a class="nav-link text-white" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                                {% if post.post_set.all %}
-                                {# if post has subposts create a new ul tag, else close li tag #}
-                                <ul class="nav-item">
+                                 {% if post.post_set.all %}
+                                 {# if post has subposts create a new ul tag, else close li tag #}
+                            <li class="nav-item dropdown">                               
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ post.title }}</a>
+                                   
+                                <ul class="dropdown-menu">
                                     {% for post_sub in post.post_set.all %}
-                                        <li class="sub nav-item">
-                                            <a class="nav-link text-dark" href="{{ post_sub.get_absolute_url }}">{{ post_sub.title }}</a>
-                                        </li>
+                                        <li><a class="dropdown-item" href="{{ post_sub.get_absolute_url }}">{{ post_sub.title }}</a></li>
                                     {% endfor %}
-                                {% if post.post_set.all %}
                                 </ul>
-                                {% endif %}
                                 {% else %}
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+
+                                  </li>
                                 {% endif %}
                         {% endif %}
                     {% endif %}
@@ -72,31 +67,41 @@
                 <li>Sorry, no posts in this list.</li>
                 {% endfor %}
 
+
+        
+
+              </ul>
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
             </div>
+          </div>
+        </nav>
+      </header>
 
-        </div>
-        {# div.menu navbar end #}
-
-        <div class="content text-primary">
+      <main class="flex-shrink-0">
+        <div class="container">
             {% block content %}
 
             {% endblock content %}
-        </div>
-        {# div.content end #}
 
-        <div class="footer bg-primary">
+        </div>
+      </main>
+
+      <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+          <span class="text-muted">
             {% for option in options %}
             {% if option.name == 'Footer' %}
             {{ option.content |safe }}
             {% endif %}
             {% endfor %}
+          </span>
         </div>
-        {# div.footer end #}
+      </footer>
 
-    </div>
-    {# div.wrapper end #}
-
-
+    
 
     {# Optional JavaScript; choose one of the two! #}
 
