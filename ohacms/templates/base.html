@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="h-100">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -16,8 +16,23 @@
     {# My Css Styles Start #}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css\style-3.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css\carousel.css' %}">
     {# My Css Styles End #}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -80,7 +95,7 @@
         </nav>
       </header>
 
-      <main class="flex-shrink-0">
+      <main>
         {% block slide %}
 
         {% endblock slide %}
@@ -91,19 +106,18 @@
             {% endblock content %}
 
         </div>
-      </main>
-
-      <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-          <span class="text-muted">
-            {% for option in options %}
+        <hr class="featurette-divider">
+        <footer class="container">
+          {% for option in options %}
             {% if option.name == 'Footer' %}
             {{ option.content |safe }}
             {% endif %}
-            {% endfor %}
-          </span>
-        </div>
-      </footer>
+            {% endfor %}  
+        
+        </footer>
+      </main>
+
+ 
 
     
 
