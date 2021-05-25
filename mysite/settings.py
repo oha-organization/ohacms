@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6o2y2___*!d6zp5@j5cbsp))*gx3_h&5x6ogw4@5oyq^72ofcn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.ohacms.site','128.199.60.177','ohacms.site']
 
 
 
