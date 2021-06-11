@@ -13,3 +13,6 @@ class HomePageView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+def chat(request):
+    return render(request, 'chat.html')
