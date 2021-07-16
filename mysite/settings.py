@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ohacms',
     'ckeditor',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

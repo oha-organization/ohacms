@@ -20,7 +20,8 @@ from django.conf import settings # new
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('ohacms.urls'))
+    path('', include('ohacms.urls')),
+   # path('', include('ohacms.api.urls'))
 ]
 
 if settings.DEBUG: # new
