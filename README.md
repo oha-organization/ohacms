@@ -1,11 +1,7 @@
 # ohacms
 OHACMS with Django
 
-Notları buraya alırız.
-
-Ayrı branchler üzepiprinde de çalışırız.
-
-migrate işlemleri
+migrate commands
 python manage.py makemigrations
 python manage.py migrate 
 
