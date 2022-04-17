@@ -2,16 +2,21 @@
 OHACMS with Django
 
 migrate commands
+
 python manage.py makemigrations
+
 python manage.py migrate 
 
 runserver
+
 python manage.py runserver
 
 test
+
 python manage.py test
 
 firefoxdriver
+
 https://selenium-python.readthedocs.io/installation.html
 
 
