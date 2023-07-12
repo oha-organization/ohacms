@@ -1,10 +1,10 @@
 asgiref==3.3.4
-Django==4.1.2
+Django==4.2.3
 django-ckeditor==6.0.0
 django-js-asset==1.2.2
 pytz==2021.1
 selenium==3.141.0
 sqlparse==0.4.1
 urllib3==1.26.4
-pillow==9.3.0
-djangorestframework==3.12.4
+pillow==10.0.0
+djangorestframework==3.14.0
