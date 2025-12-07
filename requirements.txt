@@ -5,6 +5,6 @@ django-js-asset==1.2.2
 pytz==2021.1
 selenium==3.141.0
 sqlparse==0.5.0
-urllib3==2.5.0
+urllib3==2.6.0
 pillow==10.3.0
 djangorestframework==3.15.2
